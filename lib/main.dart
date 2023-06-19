@@ -81,23 +81,62 @@ class _MyHomePageState extends State<MyHomePage> {
           return Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                height: 500,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  gradient: LinearGradient(
-                    colors: themeService.isDarkModeOn
-                        ? [
-                            Colors.blue,
-                            Colors.purple,
-                          ]
-                        : [
-                            Colors.yellow,
-                            Colors.pink,
-                          ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
+              child: Material(
+                elevation: 20,
+                borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  height: 500,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                      colors: themeService.isDarkModeOn
+                          ? [
+                              Colors.blue,
+                              Colors.purple,
+                            ]
+                          : [
+                              Colors.yellow,
+                              Colors.pink,
+                            ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
                   ),
+                  child: Stack(children: [
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 225,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color.fromARGB(255, 0, 204, 255),
+                            width: 2,
+                          ),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 30, 13, 124),
+                              blurRadius: 15,
+                              spreadRadius: 5,
+                            )
+                          ],
+                          color: themeService.isDarkModeOn
+                              ? Colors.black
+                              : Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            Switch(
+                                value: themeService.isDarkModeOn,
+                                onChanged: (value) {
+                                  themeService.toggleDarkMode();
+                                }),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ]),
                 ),
               ),
             ),
