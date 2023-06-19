@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       builder: (context, themeService, child) {
         return MaterialApp(
           title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
           themeMode:
               themeService.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
           theme: AppTheme.lightTheme,
@@ -84,7 +85,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 500,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.blue,
+                  gradient: LinearGradient(
+                    colors: themeService.isDarkModeOn
+                        ? [
+                            Colors.blue,
+                            Colors.purple,
+                          ]
+                        : [
+                            Colors.yellow,
+                            Colors.pink,
+                          ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
                 ),
               ),
             ),
