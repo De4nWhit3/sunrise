@@ -75,6 +75,22 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      body: Consumer<ThemeService>(
+        builder: ((context, themeService, child) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                height: 500,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          );
+        }),
+      ),
     );
   }
 }
