@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sunrise/services/ThemeService.dart';
+import 'package:sunrise/widgets/sun.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -103,6 +104,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   child: Stack(children: [
+                    AnimatedPadding(
+                        padding: EdgeInsets.only(
+                            top: themeService.isDarkModeOn ? 110 : 50),
+                        duration: const Duration(milliseconds: 200),
+                        child: const Sun()),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
@@ -110,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Color.fromARGB(255, 0, 204, 255),
+                            color: const Color.fromARGB(255, 0, 204, 255),
                             width: 2,
                           ),
                           boxShadow: const [
