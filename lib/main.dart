@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sunrise/services/ThemeService.dart';
 import 'package:sunrise/widgets/moon.dart';
+import 'package:sunrise/widgets/star.dart';
 import 'package:sunrise/widgets/sun.dart';
 
 void main() {
@@ -105,6 +106,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   child: Stack(children: [
+                    Positioned(
+                      top: 100,
+                      right: 200,
+                      child: AnimatedOpacity(
+                          duration: const Duration(milliseconds: 200),
+                          opacity: themeService.isDarkModeOn ? 1 : 0,
+                          child: const Star()),
+                    ),
                     AnimatedPositioned(
                       duration: const Duration(milliseconds: 400),
                       top: themeService.isDarkModeOn ? 100 : 130,
